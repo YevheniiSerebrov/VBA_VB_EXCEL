@@ -11,7 +11,7 @@ Cells(i, 2) = A(i)
 End If
 Next i
 End Sub
-_________________________________________
+'_________________________________________
 
 Sub var_18_3()
 Dim A(), B() As Double
@@ -54,7 +54,7 @@ For i = 1 To n
     Cells(i, 4) = A(i)
 Next i
 End Sub
-_____________________________________________
+'_____________________________________________
 Sub sevenone()
 Dim a(), x, y, buf As Long
 Dim n, i As Long
@@ -72,7 +72,7 @@ Next j
 Next i
 MsgBox ("Масив виведено")
 End Sub
-________________________________________
+'________________________________________
 Sub laborseventwo()
 Dim a() As Integer
 Dim n, i As Long
@@ -89,7 +89,7 @@ Next j
 Next i
 MsgBox ("Матриця виведена на екран")
 End Sub
-__________________________________________
+'__________________________________________
 Sub var_16_3()
 Dim a(), min, c, sum, tmp As Double
 Dim n, i, j As Double
@@ -133,7 +133,7 @@ For i = 1 To n
     Cells(i, 4) = a(i)
 Next i
 End Sub
-________________________________
+'________________________________
 Sub laborsix()
 Dim a(), dob_1, dob_2 As Long
 Dim n, i As Long
@@ -155,7 +155,7 @@ Else
 End If
 Next i
 End Sub
-___________________________
+'___________________________
 Sub labor5()
 Dim i, sum   As Long
 sum = 0
@@ -164,7 +164,7 @@ sum = (sum + (i ^ 2))
 Next i
 MsgBox ("Сума=" & sum)
 End Sub
-________________________________
+'________________________________
 Sub mas()
 Dim a, B, h, min, max, sum, dob As Single
 Dim i, j As Integer
@@ -211,7 +211,75 @@ Cells(1, 6) = "Dob"
 Cells(2, 6) = dob
 End Sub
 
-_______________________________________
-MsgBox ActiveWorkbook.Path
-Filename = InputBox("vv nazvu rob knigi", , "D:/priklad.xls")
-ActiveWorkbook.Worksheets.Add after:=Worksheets ("priklad_1")
+'_______________________________________
+Public Sub завдання_1()
+Dim A() As Integer
+Dim n, i, j As Byte
+n = InputBox("введіть кількість елементів масиву")
+ReDim A(n, n)
+For i = 1 To n
+For j = 1 To n
+    If i = j Or (i + j) = n + 1 Then
+    Cells(i, j) = 1
+    Else
+    Cells(i, j) = 0
+    End If
+Next j
+Next i
+End Sub
+'___________________________________________
+Public Sub завд2()
+    Dim A(), i, j As Integer
+    Dim k As String
+k = InputBox("введіть кількість елементів масиву")
+ReDim A(k, k)
+For i = 1 To k
+    For j = 1 To k
+        If (j = 1 Or j = k) And (i = 2 Or i = k - 1) Or (j = 2 Or j = k - 1) And (i = k Or i = 1) Then
+        Cells(i, j) = 0
+        Else
+        Cells(i, j) = 1
+        End If
+    Next j
+Next i
+End Sub
+'_____________________________________________
+Public Sub завд3()
+Dim A(), i, j As Integer
+    Dim n As String
+n = InputBox("введіть кількість елементів масиву")
+ReDim A(n, n)
+For i = 1 To n
+    For j = 1 To n
+        If (j = 1 Or j = n) And (i > 1 And i < n) Or (j = 2 Or j = n - 1) And (i > 2 And i < n - 1) Or (j = 3 Or j = n - 2) And (i > 3 And i < n - 2) Then
+        Cells(i, j) = 0
+        Else
+        Cells(i, j) = 1
+        End If
+    Next j
+    Next i
+End Sub
+'____________________________________
+private завд4()
+Dim A(), i, j, n As Integer
+n = InputBox("Введіть розмірність матриці")
+
+ReDim A(n, n)
+
+For i = 1 To n
+    For j = 1 To i
+        A(j - 1, i - j) = i 'над діагоналлю
+        A(n - i + j - 1, n - j) = i 'під діагоналлю
+    Next j
+Next i
+
+    Dim res As String
+    res = ""
+    For i = 0 To n - 1
+    For j = 0 To n - 1
+    res = res & "  " & A(i, j)
+    Next j
+    res = res & vbCrLf
+    Next i
+    MsgBox (res)
+End Sub
